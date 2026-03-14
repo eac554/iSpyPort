@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="javascript" href="script.js">
+    <title> Tensile Test for Passwords </title>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!--HEADER-->
+        <header>
+            <h1>
+                Password Tensile
+            </h1>
+            <p class="tagline"> Test your password's strength. 16+ characters is recommended. </p>
+        </header>
+
+        <!-- PASSWORD INPUT -->
+        <div class="input-wrapper">
+            <input type="password" id="password-input" placeholder="Test a password..." autocomplete="off"
+                spellcheck="false">
+            <button id="toggle-visibility" class="toggle-btn" aria-label="Toggle Visibility">
+                <!-- View Password -->
+                <svg class="eye-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                    <circle cx="12" cy="12" r="3" />
+                </svg>
+                <!-- CLOSE PASSWORD VIEWING -->
+                <svg class="eye-closed" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+                    <path
+                        d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
+                    <line x1="1" y1="1" x2="23" y2="23" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- STRENGTH METER -->
+        <div class="meter-section" id="meter-section">
+            <div class="meter-bar">
+                <div class="meter-fill" id="meter-fill">
+                </div>
+            </div>
+            <div class="meter-label">
+                <span id="strength-text"> Stay secure! </span>
+                <span id="crack-time" class="crack-time"> </span>
+            </div>
+        </div>
+
+        <!-- PASSWORD EVALUATION-->
+        <div class="evaluation" id="evaluation">
+            <div class="evaluation-item" id="check-length">
+                <span class="evaluation-icon">-</span>
+                <span>8+ characters</span>
+            </div>
+            <div class="evaluation-item" id="check-upper">
+                <span class="evaluation-icon">-</span>
+                <span>Uppercase letter</span>
+            </div>
+            <div class="evaluation-item" id="check-lower">
+                <span class="evaluation-icon">-</span>
+                <span>Lowercase letter</span>
+            </div>
+            <div class="evaluation-item" id="check-number">
+                <span class="evaluation-icon">-</span>
+                <span>Number</span>
+            </div>
+            <div class="evaluation-item" id="check-special">
+                <span class="evaluation-icon">-</span>
+                <span>Special character</span>
+            </div>
+        </div>
+
+        <!-- PASSWORD TIPS -->
+        <div class="tips-section">
+            <h3> Tips for a stronger Password </h3>
+            <ul class="tips-list">
+                <li> Avoid using personal info like your name, birthday, or your pet's name </li>
+                <li> Avoid swapping a's with @'s and l's with 1's </li>
+                <li> Don't reuse passwords across different websites </li>
+                <li> Use a passphrase, if one is available, or string random words together like "apple couch shoe
+                    bottle
+                    asphalt" </li>
+                <li> Using a password manager is regarded as one of the safest way to store passwords online like <a
+                        href="https://bitwarden.com"> BitWarden </a> </li>
+                <li> Never enter real passwords into online tools, this checker runs 100% in your browser with zero
+                    server communication. Verify by disconnecting your Wi-Fi and testing it </li>
+                <li> Change passwords immediately if you are aware of a data breach as you may be vulnerable </li>
+            </ul>
+        </div>
+
+        <!-- SECURITY -->
+        <div class="security-note">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+            <span>Your password is never stored.</span>
+        </div>
+
+        <!-- FOOTER -->
+        <footer>
+            <p> 2026 © <a href="https://github.com/eac554" target="_blank"> Elester Charleston </a> </p>
+        </footer>
+    </div>
+
+    <!-- JS SCRIPT FILE -->
+    <script src="script.js"> </script>
+</body>
+
+</html>
