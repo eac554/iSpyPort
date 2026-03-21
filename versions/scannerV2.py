@@ -37,5 +37,5 @@ def main():
         print("This is not a valid port to scan.")
         exit()
     threaded_scan(target_scan, start_port, end_port)
-  
+
 main()
