@@ -1,6 +1,7 @@
 import socket
-import threading
+from concurrent.futures import ThreadPoolExecutor
 
+MAX_WORKERS = 100
 # Only 'localhost' and '127.0.0.1' are allowed for safety.
 def scan_port(target_scan, port):
     # Scan each port from start_port to end_port
@@ -15,14 +16,9 @@ def scan_port(target_scan, port):
 
 
 def threaded_scan(target_scan, start_port, end_port):
-    threads = []
-    for port in range(start_port, end_port + 1):
-        thread = threading.Thread(target=scan_port, args=(target_scan, port))
-        thread.start()
-        threads.append(thread)
-    for thread in threads:
-        thread.join()
-
+    ports = range(start_port, end_port + 1)
+    with ThreadPoolExecutor(max_workers = MAX_WORKERS) as executor:
+        executor.map(lambda port: scan_port(target_scan, port), ports)
 
 def main():
     target_scan = input("Enter target: ")
