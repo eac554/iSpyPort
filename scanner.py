@@ -8,17 +8,20 @@ def scan_port(target_scan, port):
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.settimeout(0.5)
     connection = sock.connect_ex((target_scan, port))
-    if connection == 0:
-        print(f'Port {port}: OPEN')
-    else:
-        print(f'Port {port}: CLOSED')
     sock.close()
+    if connection == 0:
+        return f'Port {port}: OPEN'
+    else:
+        return f'Port {port}: CLOSED'
 
 
 def threaded_scan(target_scan, start_port, end_port):
     ports = range(start_port, end_port + 1)
     with ThreadPoolExecutor(max_workers = MAX_WORKERS) as executor:
-        executor.map(lambda port: scan_port(target_scan, port), ports)
+        results = executor.map(lambda port: scan_port(target_scan, port), ports)
+        
+    for result in results:
+        print(result)
 
 def main():
     target_scan = input("Enter target: ")
@@ -29,12 +32,12 @@ def main():
     start_port = int(input("Starting port: "))
     if start_port < 0:
         print("This is not a valid port to scan.")
-        exit()
+        main()
 
     end_port = int(input("Ending port: "))
     if end_port > 65535:
         print("This is not a valid port to scan.")
-        exit()
+        main()
 
     threaded_scan(target_scan, start_port, end_port)
   
